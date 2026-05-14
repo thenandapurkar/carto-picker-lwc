@@ -1,0 +1,169 @@
+.map-wrapper {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    border-radius: var(--slds-g-radius-border-3, 12px);
+    box-shadow: var(--slds-g-shadow-1, 0 1px 3px rgba(0, 0, 0, 0.12));
+    background: var(--slds-g-color-surface-1, #ffffff);
+    min-height: 0;
+}
+
+.status-banner {
+    position: absolute;
+    inset: 0;
+    z-index: 6000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: var(--slds-g-spacing-4, 16px);
+    text-align: center;
+    font-size: var(--slds-g-font-size-3, 14px);
+    line-height: 1.4;
+    color: var(--slds-g-color-on-surface-1, #181818);
+    background: rgba(255, 255, 255, 0.96);
+}
+
+.status-banner--error {
+    color: var(--slds-g-color-on-error-1, #8e030f);
+    background: var(--slds-g-color-error-container-1, rgba(254, 227, 234, 0.97));
+}
+
+.status-text {
+    max-width: 28rem;
+}
+
+.map-container {
+    position: relative;
+    z-index: 0;
+    isolation: isolate;
+    flex: 1 1 auto;
+    width: 100%;
+    height: 100%;
+    min-height: 0;
+}
+
+.map-wrapper :global(.leaflet-container) {
+    width: 100%;
+    height: 100%;
+    font-family: inherit;
+    z-index: 0;
+}
+
+.map-wrapper :global(.leaflet-control-container) {
+    z-index: 1;
+}
+
+/* ---- Crosshair target (fixed center of map) ---- */
+
+.crosshair {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5000;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.crosshair-ring {
+    width: 40px;
+    height: 40px;
+    border: 2.5px solid var(--slds-g-color-accent-1, #1b96ff);
+    border-radius: var(--slds-g-radius-circle, 50%);
+    opacity: 0.45;
+    position: absolute;
+}
+
+.crosshair-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--slds-g-color-accent-1, #1b96ff);
+    border: 2px solid var(--slds-g-color-on-accent-1, #ffffff);
+    border-radius: var(--slds-g-radius-circle, 50%);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+    position: relative;
+}
+
+/* The confirmed-location pin lives entirely as inline styles + a document-level
+ * <style> block injected from JS (see cartoPicker.js: ensurePinStylesheet). LWC
+ * scoped CSS does not reliably target Leaflet-injected DOM, so all pin styles
+ * are kept outside this scoped stylesheet. */
+
+/* ---- Bottom bar (address + confirm / confirmed / hint) ---- */
+
+.bottom-bar {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    z-index: 5000;
+    pointer-events: auto;
+    padding: var(--slds-g-spacing-3, 12px) var(--slds-g-spacing-4, 16px);
+    padding-bottom: max(var(--slds-g-spacing-3, 12px), env(safe-area-inset-bottom, 0px));
+    background: rgba(255, 255, 255, 0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-top: 1px solid var(--slds-g-color-border-2, rgba(0, 0, 0, 0.06));
+}
+
+.address-row,
+.confirmed-row,
+.hint-row {
+    display: flex;
+    align-items: center;
+    gap: var(--slds-g-spacing-2, 8px);
+    font-size: var(--slds-g-font-size-3, 14px);
+    line-height: 1.35;
+    color: var(--slds-g-color-on-surface-1, #181818);
+}
+
+.address-text {
+    flex: 1;
+    min-width: 0;
+    word-break: break-word;
+}
+
+.hint-text {
+    flex: 1;
+    color: var(--slds-g-color-on-surface-2, #706e6b);
+    font-style: italic;
+}
+
+.confirm-btn {
+    flex-shrink: 0;
+    padding: 6px 16px;
+    border: none;
+    border-radius: var(--slds-g-radius-border-2, 6px);
+    background: var(--slds-g-color-accent-1, #1b96ff);
+    color: var(--slds-g-color-on-accent-1, #ffffff);
+    font-size: var(--slds-g-font-size-2, 13px);
+    font-weight: var(--slds-g-font-weight-6, 600);
+    cursor: pointer;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.confirm-btn:hover {
+    background: var(--slds-g-color-accent-2, #0176d3);
+}
+
+.reset-btn {
+    flex-shrink: 0;
+    padding: 6px 12px;
+    border: 1px solid var(--slds-g-color-border-1, #c9c7c5);
+    border-radius: var(--slds-g-radius-border-2, 6px);
+    background: transparent;
+    color: var(--slds-g-color-on-surface-1, #181818);
+    font-size: var(--slds-g-font-size-2, 13px);
+    font-weight: var(--slds-g-font-weight-5, 500);
+    cursor: pointer;
+    line-height: 1.4;
+    white-space: nowrap;
+}
+
+.reset-btn:hover {
+    background: var(--slds-g-color-surface-3, rgba(0, 0, 0, 0.04));
+}

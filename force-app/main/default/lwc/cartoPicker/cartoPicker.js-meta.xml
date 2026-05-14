@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>64.0</apiVersion>
+    <isExposed>true</isExposed>
+    <masterLabel>Map Picker (Leaflet + CartoDB)</masterLabel>
+    <description>Pan-to-pick map with reverse geocoding. Uses Leaflet + CartoDB raster basemaps (no API key) and Nominatim for reverse geocoding.</description>
+    <targets>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__FlowScreen">
+            <property name="mapStyle" type="String" label="Map Style" default="voyager" description="CartoDB basemap style." role="inputOnly" datasource="voyager,voyager_nolabels,voyager_labels_under,positron,positron_nolabels,dark_matter,dark_matter_nolabels"/>
+            <property name="inputLatitude" type="String" label="Input Latitude" default="39.7520" role="inputOnly"/>
+            <property name="inputLongitude" type="String" label="Input Longitude" default="-104.9915" role="inputOnly"/>
+            <property name="mapZoomLevel" type="Integer" label="Map Zoom Level" default="16" role="inputOnly"/>
+            <property name="mapHeight" type="Integer" label="Map Height (px)" default="500" role="inputOnly"/>
+            <property name="selectedLatitude" type="String" label="Selected Latitude" role="outputOnly"/>
+            <property name="selectedLongitude" type="String" label="Selected Longitude" role="outputOnly"/>
+            <property name="city" type="String" label="City" role="outputOnly"/>
+            <property name="state" type="String" label="State" role="outputOnly"/>
+            <property name="street" type="String" label="Street" role="outputOnly"/>
+            <property name="postal" type="String" label="Postal" role="outputOnly"/>
+            <property name="fullStreetAddress" type="String" label="Full Street Address" role="outputOnly"/>
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

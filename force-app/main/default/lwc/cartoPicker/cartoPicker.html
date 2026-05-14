@@ -1,0 +1,47 @@
+<template>
+    <div class="map-wrapper" style={containerStyle}>
+        <template lwc:if={showStatusBanner}>
+            <div class={statusBannerClass} role="status">
+                <span class="status-text">{statusMessage}</span>
+            </div>
+        </template>
+        <div class="map-container" lwc:dom="manual"></div>
+        <template lwc:if={showCrosshair}>
+            <div class="crosshair" aria-hidden="true">
+                <div class="crosshair-ring"></div>
+                <div class="crosshair-dot"></div>
+            </div>
+        </template>
+        <template lwc:if={showBottomBar}>
+            <div class="bottom-bar">
+                <template lwc:if={isConfirmed}>
+                    <div class="confirmed-row">
+                        <lightning-icon
+                            icon-name="utility:check"
+                            size="x-small"
+                            alternative-text="Confirmed"
+                        ></lightning-icon>
+                        <span class="address-text">{fullStreetAddress}</span>
+                        <button class="reset-btn" type="button" onclick={handleReset}>Change</button>
+                    </div>
+                </template>
+                <template lwc:elseif={fullStreetAddress}>
+                    <div class="address-row">
+                        <lightning-icon
+                            icon-name="utility:location"
+                            size="x-small"
+                            alternative-text="Location"
+                        ></lightning-icon>
+                        <span class="address-text">{fullStreetAddress}</span>
+                        <button class="confirm-btn" type="button" onclick={handleConfirm}>Confirm</button>
+                    </div>
+                </template>
+                <template lwc:else>
+                    <div class="hint-row">
+                        <span class="hint-text">Pan the map to center on the location</span>
+                    </div>
+                </template>
+            </div>
+        </template>
+    </div>
+</template>
