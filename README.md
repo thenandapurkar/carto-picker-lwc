@@ -2,6 +2,11 @@
 
 A pan-to-pick map component for Salesforce Flows. Users drag the map to center a crosshair on a location, confirm their selection, and the component outputs the latitude, longitude, and full street address — all without typing an address.
 
+<img width="524" height="525" alt="Screenshot 2026-05-14 at 12 08 36 PM" src="https://github.com/user-attachments/assets/0c9e7ec8-0113-4e8b-ac10-5195ce24a32d" />
+<img width="542" height="526" alt="Screenshot 2026-05-14 at 12 08 46 PM" src="https://github.com/user-attachments/assets/61983acf-648d-4a8e-9b08-7e476f083ad5" />
+
+
+
 Built with [Leaflet.js](https://leafletjs.com/) and [CARTO](https://carto.com/) raster basemaps. **No API keys required.** Reverse geocoding is handled by [Nominatim (OpenStreetMap)](https://nominatim.openstreetmap.org/) — also free, no keys.
 
 ## Install
