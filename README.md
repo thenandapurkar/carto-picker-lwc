@@ -12,7 +12,7 @@ Built with [Leaflet.js](https://leafletjs.com/) and [CARTO](https://carto.com/) 
 Click the button below to deploy directly into your Salesforce org:
 
 <a href="https://githubsfdeploy.herokuapp.com?owner=thenandapurkar&repo=carto-picker-lwc&ref=main">
-  <img alt="Deploy to Salesforce" src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+  <img alt="Deploy to Salesforce" src="./deploy-button.svg">
 </a>
 
 ### Manual Install
